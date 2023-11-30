@@ -9,9 +9,9 @@ public class ProjetoA3 {
         //Frutas frutasJanela = new Frutas();
         //frutasJanela.setVisible(true);
         
-        LoginUsuario menuLogin = new LoginUsuario();
-        menuLogin.setTitle("Login");
-        menuLogin.setVisible(true);
+        LoginUsuario loginUsuario = new LoginUsuario();
+        loginUsuario.setTitle("Login");
+        loginUsuario.setVisible(true);
         
         DB db = new DB("bancodados.db");
         db.query("SELECT * FROM funcionarios");

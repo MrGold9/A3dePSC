@@ -96,8 +96,8 @@ public class LoginUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        CadastrarUsuario telaCadastrarUsuario = new CadastrarUsuario();
-        telaCadastrarUsuario.setVisible(true);
+        CadastrarUsuario cadastrarUsuario = new CadastrarUsuario();
+        cadastrarUsuario.setVisible(true);
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     /**

@@ -12,13 +12,13 @@ public class DB {
     private Statement statement;
     private ResultSet rs;
     
-    public DB(String filename) {
-        this.openConnection(filename);
+    public DB(String bancodados) {
+        this.openConnection(bancodados);
     }
     
-    private void openConnection(String filename) {
+    private void openConnection(String bancodados) {
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:"+filename);
+            connection = DriverManager.getConnection("jdbc:sqlite:"+bancodados);
             statement = connection.createStatement();
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
         } catch (SQLException ex) {

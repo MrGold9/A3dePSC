@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package projetoa3;
 
-/**
- *
- * @author Gold
- */
+
 public class CadastrarUsuario extends javax.swing.JPanel {
 
     /**
@@ -120,9 +113,7 @@ public class CadastrarUsuario extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnConcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConcluirActionPerformed
-        if () {
-            
-        }
+        
     }//GEN-LAST:event_btnConcluirActionPerformed
 
 
