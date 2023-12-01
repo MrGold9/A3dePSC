@@ -1,7 +1,9 @@
 package projetoa3;
 
+import javax.swing.JOptionPane;
 
-public class CadastrarUsuario extends javax.swing.JPanel {
+
+public class CadastrarUsuario extends javax.swing.JFrame {
 
     /**
      * Creates new form CadastrarUsuario
@@ -9,6 +11,10 @@ public class CadastrarUsuario extends javax.swing.JPanel {
     public CadastrarUsuario() {
         initComponents();
     }
+    
+    //Variáveis globais
+    public static String usuarioCadastro = "";
+    public static String senhaCadastro = "";
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -19,18 +25,16 @@ public class CadastrarUsuario extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtSenha = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JButton();
         btnConcluir = new javax.swing.JButton();
         txtUsuario = new javax.swing.JTextField();
         txtRepetirSenha = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        txtSenha = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
-        jLabel1.setText("Usuário:");
-
-        jLabel2.setText("Senha:");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -54,8 +58,12 @@ public class CadastrarUsuario extends javax.swing.JPanel {
 
         jLabel3.setText("Repetir Senha:");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        jLabel1.setText("Usuário:");
+
+        jLabel2.setText("Senha:");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -102,20 +110,83 @@ public class CadastrarUsuario extends javax.swing.JPanel {
                     .addComponent(btnConcluir))
                 .addGap(54, 54, 54))
         );
-    }// </editor-fold>//GEN-END:initComponents
 
-    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUsuarioActionPerformed
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnConcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConcluirActionPerformed
+
         
+        if (this.txtUsuario.getText().length() < 2) 
+        {
+            JOptionPane.showMessageDialog(null, "Digite um usuário válido");
+        }
+        else
+        {
+            usuarioCadastro = this.txtUsuario.getText();
+        }
+        
+        if (this.txtSenha.getText().length() < 8)
+        {
+            JOptionPane.showMessageDialog(null, "A senha precisa de 8 " +
+                    "caracteres no mínimo");
+        }
+        else if (this.txtSenha.getText().equals(this.txtRepetirSenha.getText()) == false)
+        {
+            JOptionPane.showMessageDialog(null, "A senhas não coincidem");
+        }
+        else
+        {
+            senhaCadastro = this.txtSenha.getText();
+            
+            this.setVisible(false);
+            
+            JOptionPane.showMessageDialog(null, "Cadastro bem-sucedido");
+        }
     }//GEN-LAST:event_btnConcluirActionPerformed
 
+    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsuarioActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(CadastrarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(CadastrarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(CadastrarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(CadastrarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new CadastrarUsuario().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;

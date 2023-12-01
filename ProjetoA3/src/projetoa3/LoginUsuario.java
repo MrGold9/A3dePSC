@@ -1,5 +1,6 @@
 package projetoa3;
 
+import javax.swing.JOptionPane;
 
 public class LoginUsuario extends javax.swing.JFrame {
 
@@ -29,6 +30,11 @@ public class LoginUsuario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
 
         btnCadastrar.setText("Cadastrar");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -99,6 +105,20 @@ public class LoginUsuario extends javax.swing.JFrame {
         CadastrarUsuario cadastrarUsuario = new CadastrarUsuario();
         cadastrarUsuario.setVisible(true);
     }//GEN-LAST:event_btnCadastrarActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        if (this.txtUsuario.getText().equals(CadastrarUsuario.usuarioCadastro) && 
+                this.txtSenha.getText().equals(CadastrarUsuario.senhaCadastro)) 
+        {
+            Menu menu = new Menu();
+            menu.setVisible(true);
+            this.setVisible(false);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "As credenciais estão incorretas");
+        }
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
