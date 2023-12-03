@@ -129,7 +129,7 @@ public class LoginUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        CadastrarUsuario cadastrarUsuario = new CadastrarUsuario(this, -1);
+        CadastrarUsuario cadastrarUsuario = new CadastrarUsuario();
         cadastrarUsuario.setVisible(true);
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
@@ -139,11 +139,14 @@ public class LoginUsuario extends javax.swing.JFrame {
         
         String sql = "SELECT usuario, senha FROM usuarios WHERE usuario = '" + txtUsuario.getText() + "' AND senha = '" + txtSenha.getText() + "'";
         
+        db.query(sql);
+        
         if (db.next()) 
         {
             db.closeConnection();
             Menu menu = new Menu();
             menu.setVisible(true);
+            this.setVisible(false);
         }
         else
         {

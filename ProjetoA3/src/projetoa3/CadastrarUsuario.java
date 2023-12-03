@@ -4,34 +4,17 @@ import javax.swing.JOptionPane;
 
 
 public class CadastrarUsuario extends javax.swing.JFrame {
-    private LoginUsuario loginUsuario;
-    private CadastrarUsuario cadastrarUsuario;
-    private int id;
+
 
     /**
      * Creates new form CadastrarUsuario
      */
-    public CadastrarUsuario(LoginUsuario loginUsuario, int id) {
+    public CadastrarUsuario() {
         initComponents();
-        
-        this.loginUsuario = loginUsuario;
-        this.id = id;
-        
-        if(id != -1) {
-            this.setTitle("Cadastrar Usuário");
-            DB db = new DB("bancodados.db");
-            db.query("SELECT * FROM usuarios WHERE id="+id);
-            if(db.next()) {
-                String usuario = db.getString("usuario");
-                String senha = db.getString("senha");
-            }
-            db.closeConnection();        
-        } else {
-            this.setTitle("Cadastrar Usuario");
-        }
     }
     
     //Variáveis
+    private int id = 0;
     private String usuarioCadastro = "";
     private String senhaCadastro = "";
 
@@ -173,19 +156,10 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             
             DB db = new DB("bancodados.db");
             String query = "";
-            if (id == -1) 
-            {
-                id++;
-                query = "INSERT INTO usuarios (id, usuario, senha) ";
-                query = query + "VALUES (";
-                query = query + "'" + id + "',";
-                query = query + "'" + usuarioCadastro + "',";
-                query = query + "'" + senhaCadastro + "'";
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(null, "Usuário não inserido no banco de dados");
-            }
+            id++;
+            query = "INSERT INTO usuarios (id, usuario, senha) VALUES ('" + id + "', '" + usuarioCadastro + "', '" + senhaCadastro + "')";
+            System.out.println(db.execQuery(query));
+        
         }
     }//GEN-LAST:event_btnConcluirActionPerformed
 
