@@ -64,7 +64,7 @@ Exemplo: Caso a sua aplicação tenha alguma funcionalidade de login apresente n
 |823214091|[Diogo de Azevedo Alonso](https://github.com/deogos)|
 |82320503|[Gustavo de Oliveira Afonso do Amaral](https://github.com/Gusta-d-oliveira)|
 |823217614|[Kenedy Menditto Do Nascimento](https://github.com/Kenedymendy)|
-|823150002|[Miguel Borges Assis]|
+|823150002|[Miguel Borges Assis](https://github.com/MiguelBorgess/MiguelBorgess)|
 |823160740|[Ryan Suzuki De Sousa](https://github.com/ryansuzuki01)|
 |82320665|[Valeria Alves Silva](https://github.com/1456354)|
 |823214219|[Vitor Moreira dos Santos](https://github.com/VitorM147)|
