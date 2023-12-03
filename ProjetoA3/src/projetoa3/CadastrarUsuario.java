@@ -4,17 +4,36 @@ import javax.swing.JOptionPane;
 
 
 public class CadastrarUsuario extends javax.swing.JFrame {
+    private LoginUsuario loginUsuario;
+    private CadastrarUsuario cadastrarUsuario;
+    private int id;
 
     /**
      * Creates new form CadastrarUsuario
      */
-    public CadastrarUsuario() {
+    public CadastrarUsuario(LoginUsuario loginUsuario, int id) {
         initComponents();
+        
+        this.loginUsuario = loginUsuario;
+        this.id = id;
+        
+        if(id != -1) {
+            this.setTitle("Cadastrar Usuário");
+            DB db = new DB("bancodados.db");
+            db.query("SELECT * FROM usuarios WHERE id="+id);
+            if(db.next()) {
+                String usuario = db.getString("usuario");
+                String senha = db.getString("senha");
+            }
+            db.closeConnection();        
+        } else {
+            this.setTitle("Cadastrar Usuario");
+        }
     }
     
-    //Variáveis globais
-    public static String usuarioCadastro = "";
-    public static String senhaCadastro = "";
+    //Variáveis
+    private String usuarioCadastro = "";
+    private String senhaCadastro = "";
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -135,6 +154,11 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "A senha precisa de 8 " +
                     "caracteres no mínimo");
         }
+        else if (this.txtSenha.getText().length() > 30)
+        {
+            JOptionPane.showMessageDialog(null, "A senha não pode ser maior " +
+                    "que 30 caracteres");
+        }
         else if (this.txtSenha.getText().equals(this.txtRepetirSenha.getText()) == false)
         {
             JOptionPane.showMessageDialog(null, "A senhas não coincidem");
@@ -146,6 +170,22 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             this.setVisible(false);
             
             JOptionPane.showMessageDialog(null, "Cadastro bem-sucedido");
+            
+            DB db = new DB("bancodados.db");
+            String query = "";
+            if (id == -1) 
+            {
+                id++;
+                query = "INSERT INTO usuarios (id, usuario, senha) ";
+                query = query + "VALUES (";
+                query = query + "'" + id + "',";
+                query = query + "'" + usuarioCadastro + "',";
+                query = query + "'" + senhaCadastro + "'";
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Usuário não inserido no banco de dados");
+            }
         }
     }//GEN-LAST:event_btnConcluirActionPerformed
 
@@ -179,11 +219,14 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(CadastrarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastrarUsuario().setVisible(true);
+                //new CadastrarUsuario().setVisible();
             }
         });
     }

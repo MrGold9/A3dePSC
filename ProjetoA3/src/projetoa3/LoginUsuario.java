@@ -1,6 +1,7 @@
 package projetoa3;
 
 import javax.swing.JOptionPane;
+import org.sqlite.SQLiteException;
 
 public class LoginUsuario extends javax.swing.JFrame {
 
@@ -39,6 +40,7 @@ public class LoginUsuario extends javax.swing.JFrame {
         btnLogin.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btnLogin.setForeground(new java.awt.Color(255, 255, 255));
         btnLogin.setText("Login");
+        btnLogin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
@@ -60,6 +62,7 @@ public class LoginUsuario extends javax.swing.JFrame {
         getContentPane().add(btnCadastrar);
         btnCadastrar.setBounds(610, 420, 70, 30);
 
+        txtUsuario.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsuarioActionPerformed(evt);
@@ -68,6 +71,7 @@ public class LoginUsuario extends javax.swing.JFrame {
         getContentPane().add(txtUsuario);
         txtUsuario.setBounds(490, 150, 230, 30);
 
+        txtSenha.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSenhaActionPerformed(evt);
@@ -125,21 +129,26 @@ public class LoginUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        CadastrarUsuario cadastrarUsuario = new CadastrarUsuario();
+        CadastrarUsuario cadastrarUsuario = new CadastrarUsuario(this, -1);
         cadastrarUsuario.setVisible(true);
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        if (this.txtUsuario.getText().equals(CadastrarUsuario.usuarioCadastro) && 
-                this.txtSenha.getText().equals(CadastrarUsuario.senhaCadastro)) 
+        
+        DB db = new DB("bancodados.db");
+        
+        String sql = "SELECT usuario, senha FROM usuarios WHERE usuario = '" + txtUsuario.getText() + "' AND senha = '" + txtSenha.getText() + "'";
+        
+        if (db.next()) 
         {
+            db.closeConnection();
             Menu menu = new Menu();
             menu.setVisible(true);
-            this.setVisible(false);
         }
         else
         {
-            JOptionPane.showMessageDialog(null, "As credenciais estão incorretas");
+            db.closeConnection();
+            JOptionPane.showMessageDialog(null,"As credenciais estão incorretas");
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
