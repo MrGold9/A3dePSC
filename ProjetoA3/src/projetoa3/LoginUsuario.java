@@ -30,7 +30,7 @@ public class LoginUsuario extends javax.swing.JFrame {
             Funcionarios telaInicial = new Funcionarios();
             telaInicial.setVisible(true);
             
-//            this.dispose();
+            LoginUsuario.this.dispose();
             }  
         };
         animatorLogin = new Animator(500, targetLogin);
@@ -54,6 +54,7 @@ public class LoginUsuario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(910, 540));
         getContentPane().setLayout(null);
 
         background2.setLayout(new java.awt.CardLayout());
@@ -154,6 +155,7 @@ public class LoginUsuario extends javax.swing.JFrame {
         background2.setBounds(0, 0, 910, 540);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
@@ -191,13 +193,6 @@ public class LoginUsuario extends javax.swing.JFrame {
 
             if(action){
                 animatorLogin.start();
-
-                //                TimeUnit.SECONDS.sleep(5);
-                //
-                //                Funcionarios telaInicial = new Funcionarios();
-                //                telaInicial.setVisible(true);
-                //                this.dispose();
-                //
             }
         }
 

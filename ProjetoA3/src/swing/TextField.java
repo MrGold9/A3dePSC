@@ -190,4 +190,8 @@ public class TextField extends JTextField {
         }
         super.setText(string);
     }
+
+    public Object getPassword() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
