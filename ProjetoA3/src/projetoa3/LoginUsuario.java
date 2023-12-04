@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
@@ -14,6 +15,8 @@ import org.sqlite.SQLiteException;
 public class LoginUsuario extends javax.swing.JFrame {
     
     private Animator animatorLogin;
+
+   
     public LoginUsuario() {
         initComponents();
         getContentPane().setBackground(new Color(245, 245, 245));
@@ -22,7 +25,6 @@ public class LoginUsuario extends javax.swing.JFrame {
            public void timingEvent(float fraction){
                background2.setAnimate(fraction);
            }
-           
            @Override
             public void end(){
             Funcionarios telaInicial = new Funcionarios();
@@ -33,6 +35,7 @@ public class LoginUsuario extends javax.swing.JFrame {
         };
         animatorLogin = new Animator(500, targetLogin);
         animatorLogin.setResolution(0);
+        
     }
 
     @SuppressWarnings("unchecked")
