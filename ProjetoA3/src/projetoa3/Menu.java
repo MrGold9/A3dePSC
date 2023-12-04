@@ -31,7 +31,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("CADASTRO DE FRUTAS");
+        jButton2.setText("CADASTRO DE PRODUTOS");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -71,7 +71,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Frutas frutasJanela = new Frutas();
+        Produtos frutasJanela = new Produtos();
         frutasJanela.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 

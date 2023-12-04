@@ -21,11 +21,6 @@ public class ProjetoA3 {
             int cpf = db.getInt("cpf");
             String dataNascimento = db.getString("dataNascimento");
             String estadoCivil = db.getString("estadoCivil");
-            System.out.println("ID: " + id +
-                    "\nNome: " + nome +
-                    "\nCPF: " + cpf +
-                    "\nData de Nascimento: " + dataNascimento +
-                    "\nEstado Civil: " + estadoCivil);
         }
         db.closeConnection();
         

@@ -24,12 +24,12 @@ public class LoginUsuario extends javax.swing.JFrame {
         btnLogin = new javax.swing.JButton();
         btnCadastrar = new javax.swing.JButton();
         txtUsuario = new javax.swing.JTextField();
-        txtSenha = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        txtSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -71,15 +71,6 @@ public class LoginUsuario extends javax.swing.JFrame {
         getContentPane().add(txtUsuario);
         txtUsuario.setBounds(490, 150, 230, 30);
 
-        txtSenha.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        txtSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSenhaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtSenha);
-        txtSenha.setBounds(490, 230, 230, 30);
-
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel1.setText("Usuário:");
         getContentPane().add(jLabel1);
@@ -120,6 +111,8 @@ public class LoginUsuario extends javax.swing.JFrame {
         jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLabel4);
         jLabel4.setBounds(560, 30, 140, 80);
+        getContentPane().add(txtSenha);
+        txtSenha.setBounds(490, 240, 230, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -154,10 +147,6 @@ public class LoginUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"As credenciais estão incorretas");
         }
     }//GEN-LAST:event_btnLoginActionPerformed
-
-    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSenhaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,7 +192,7 @@ public class LoginUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtSenha;
+    private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
