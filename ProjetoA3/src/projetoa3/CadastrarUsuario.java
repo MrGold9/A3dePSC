@@ -1,6 +1,10 @@
 package projetoa3;
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
+import org.jdesktop.animation.timing.Animator;
+import org.jdesktop.animation.timing.TimingTarget;
+import org.jdesktop.animation.timing.TimingTargetAdapter;
 
 
 public class CadastrarUsuario extends javax.swing.JFrame {
@@ -9,9 +13,21 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     /**
      * Creates new form CadastrarUsuario
      */
+    private Animator animatorLogin;
     public CadastrarUsuario() {
         initComponents();
+        
+        getContentPane().setBackground(new Color(245, 245, 245));
+        TimingTarget targetLogin = new TimingTargetAdapter(){
+           @Override
+           public void timingEvent(float fraction){
+               background1.setAnimate(fraction);
+           }
+        };
+        animatorLogin = new Animator(500, targetLogin);
+        animatorLogin.setResolution(0);
     }
+    
     
     //Variáveis
     private int id = 0;
@@ -27,24 +43,26 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnCancelar = new javax.swing.JButton();
-        btnConcluir = new javax.swing.JButton();
-        txtUsuario = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        background1 = new swing.Background();
+        jPanel1 = new javax.swing.JPanel();
+        txtRepetirSenha = new com.raven.swing.TextField();
+        btnConcluir = new com.raven.swing.Button();
+        txtUsuario = new com.raven.swing.TextField();
+        txtSenha = new com.raven.swing.TextField();
+        btnCancelar = new com.raven.swing.Button();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtSenha = new javax.swing.JPasswordField();
-        txtRepetirSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(910, 540));
 
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        txtRepetirSenha.setLabelText("Repetir Senha");
+
+        btnConcluir.setBackground(new java.awt.Color(255, 153, 0));
+        btnConcluir.setForeground(new java.awt.Color(255, 255, 255));
         btnConcluir.setText("Concluir");
         btnConcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -52,120 +70,179 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             }
         });
 
-        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
+        txtUsuario.setLabelText("Email");
+
+        txtSenha.setLabelText("Senha");
+
+        btnCancelar.setBorder(null);
+        btnCancelar.setForeground(new java.awt.Color(255, 153, 0));
+        btnCancelar.setText("Entrar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUsuarioActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("Repetir Senha:");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 153, 0));
+        jLabel1.setText("Registrar-se");
 
-        jLabel1.setText("Usuário:");
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setText("Já tem conta?");
 
-        jLabel2.setText("Senha:");
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(121, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtRepetirSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(94, 94, 94))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(226, 226, 226)
+                        .addComponent(btnConcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(165, 165, 165))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(173, 173, 173))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtRepetirSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(btnConcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(116, 116, 116))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(124, 124, 124))))
+        );
+
+        javax.swing.GroupLayout background1Layout = new javax.swing.GroupLayout(background1);
+        background1.setLayout(background1Layout);
+        background1Layout.setHorizontalGroup(
+            background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        background1Layout.setVerticalGroup(
+            background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnConcluir)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtRepetirSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtSenha, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))))
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addGap(382, 382, 382)
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(background1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtRepetirSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnConcluir))
-                .addGap(54, 54, 54))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(background1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(21, 21, 21)
+                .addComponent(jLabel3)
+                .addGap(121, 121, 121))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        this.setVisible(false);
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
     private void btnConcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConcluirActionPerformed
-
+//        if(!animatorLogin.isRunning()){
+//            String user = txtUsuario.getText().trim();
+//            String senha = String.valueOf(txtSenha.getPassword());
+//            boolean action = true;
+//            
+//            if(user.equals("")) {
+//                txtUsuario.setHelperText("Por favor digite seu email.");
+//                txtUsuario.grabFocus();
+//                action = false;
+//            }
+//            
+//            if(senha.equals("")) {
+//                txtSenha.setHelperText("Por favor digite sua senha.");
+//                txtSenha.grabFocus();
+//                action = false;
+//            }
+//            
+//            if(action){
+//                animatorLogin.start();   
+//            }
+//        }
         
-        if (this.txtUsuario.getText().length() < 2) 
+        if (this.txtUsuario.getText().length() < 2)
         {
-            JOptionPane.showMessageDialog(null, "Digite um usuário válido");
+            txtUsuario.setHelperText("Digite um usuário válido");
+            txtUsuario.grabFocus();
         }
         else
         {
             usuarioCadastro = this.txtUsuario.getText();
         }
-        
+
         if (this.txtSenha.getText().length() < 8)
         {
-            JOptionPane.showMessageDialog(null, "A senha precisa de 8 " +
-                    "caracteres no mínimo");
+            txtSenha.setHelperText("A senha precisa de 8 " +
+                "caracteres no mínimo");
+            txtSenha.grabFocus();
         }
         else if (this.txtSenha.getText().length() > 30)
         {
-            JOptionPane.showMessageDialog(null, "A senha não pode ser maior " +
-                    "que 30 caracteres");
+            txtSenha.setHelperText( "A senha não pode ser maior " +
+                "que 30 caracteres");
+            txtSenha.grabFocus();
         }
         else if (this.txtSenha.getText().equals(this.txtRepetirSenha.getText()) == false)
         {
-            JOptionPane.showMessageDialog(null, "A senhas não coincidem");
+            txtRepetirSenha.setHelperText("A senhas não coincidem");
+            txtRepetirSenha.grabFocus();
         }
         else
         {
             senhaCadastro = this.txtSenha.getText();
-            
+
             this.setVisible(false);
-            
+
             JOptionPane.showMessageDialog(null, "Cadastro bem-sucedido");
-            
+
             DB db = new DB("bancodados.db");
             String query = "";
             id++;
             query = "INSERT INTO usuarios (id, usuario, senha) VALUES ('" + id + "', '" + usuarioCadastro + "', '" + senhaCadastro + "')";
             System.out.println(db.execQuery(query));
-        
+
         }
     }//GEN-LAST:event_btnConcluirActionPerformed
 
-    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUsuarioActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        LoginUsuario Login = new LoginUsuario();
+        Login.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,13 +283,15 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnConcluir;
+    private swing.Background background1;
+    private com.raven.swing.Button btnCancelar;
+    private com.raven.swing.Button btnConcluir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField txtRepetirSenha;
-    private javax.swing.JPasswordField txtSenha;
-    private javax.swing.JTextField txtUsuario;
+    private javax.swing.JPanel jPanel1;
+    private com.raven.swing.TextField txtRepetirSenha;
+    private com.raven.swing.TextField txtSenha;
+    private com.raven.swing.TextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
