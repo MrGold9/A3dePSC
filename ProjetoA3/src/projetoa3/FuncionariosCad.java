@@ -250,20 +250,15 @@ public class FuncionariosCad extends javax.swing.JFrame {
 
         if (this.txtCPF.getText().length() < 8)
         {
-            txtCPF.setHelperText("A senha precisa de 8 " +
+            txtCPF.setHelperText("O cpf precisa de 8 " +
                 "caracteres no mínimo");
             txtCPF.grabFocus();
         }
-        else if (this.txtCPF.getText().length() > 30)
+        else if (this.txtCPF.getText().length() > 11)
         {
-            txtCPF.setHelperText( "A senha não pode ser maior " +
-                "que 30 caracteres");
+            txtCPF.setHelperText( "O cpf não pode ser maior " +
+                "que 10 caracteres");
             txtCPF.grabFocus();
-        }
-        else if (this.txtCPF.getText().equals(this.txtdatanascimento.getText()) == false)
-        {
-            txtdatanascimento.setHelperText("A senhas não coincidem");
-            txtdatanascimento.grabFocus();
         }
         else
         {

@@ -135,7 +135,6 @@ public class Funcionarios extends javax.swing.JFrame {
         jLabel14.setText("Usuário #00000");
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setIcon(new javax.swing.ImageIcon("C:\\Users\\Guede\\Downloads\\A3dePSC-front-end\\A3dePSC-front-end\\ProjetoA3\\src\\icons\\user.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -159,7 +158,7 @@ public class Funcionarios extends javax.swing.JFrame {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
                 .addComponent(jLabel14)
                 .addGap(28, 28, 28)
                 .addComponent(btnNovoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -173,7 +172,7 @@ public class Funcionarios extends javax.swing.JFrame {
         txtBusca.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 1, true));
 
         btnBuscar4.setForeground(new java.awt.Color(255, 153, 0));
-        btnBuscar4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Guede\\Downloads\\A3dePSC-front-end\\A3dePSC-front-end\\ProjetoA3\\src\\icons\\search.png")); // NOI18N
+        btnBuscar4.setText("Buscar");
         btnBuscar4.setEffectColor(new java.awt.Color(255, 255, 204));
         btnBuscar4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -219,7 +218,7 @@ public class Funcionarios extends javax.swing.JFrame {
                         .addGap(87, 87, 87)
                         .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBuscar4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnBuscar4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
@@ -236,7 +235,7 @@ public class Funcionarios extends javax.swing.JFrame {
                 .addGap(11, 11, 11)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(79, Short.MAX_VALUE))
         );
 

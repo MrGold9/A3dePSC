@@ -11,16 +11,16 @@ public class ProdutosCad extends javax.swing.JFrame {
         this.janelaProdutos= janelaProdutos;
         this.codigo = codigo;
         if(codigo != -1) {
-            this.setTitle("EDITAR Produtos");
+            this.setTitle("EDITAR produtos");
             DB db = new DB("bancodados.db");
-            db.query("SELECT * FROM Produtos WHERE codigo="+codigo);
+            db.query("SELECT * FROM produtos WHERE codigo="+codigo);
             if(db.next()) {
                 int quantidade = db.getInt("quantidade");
                 String nome = db.getString("nome");
                 int datavalidade = db.getInt("datavalidade");
                 txtQuantidade.setText(String.valueOf(quantidade));
                 txtDataValidade.setText(String.valueOf(datavalidade));
-                txtQuantidade.setText(nome);
+                txtNome.setText(nome);
                
             }
             db.closeConnection();        
