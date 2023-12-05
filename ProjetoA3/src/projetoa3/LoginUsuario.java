@@ -1,15 +1,39 @@
 package projetoa3;
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
+import org.jdesktop.animation.timing.Animator;
+import org.jdesktop.animation.timing.TimingTarget;
+import org.jdesktop.animation.timing.TimingTargetAdapter;
 import org.sqlite.SQLiteException;
 
 public class LoginUsuario extends javax.swing.JFrame {
-
+    
+        
+    private Animator animatorLogin;
+    
     /**
      * Creates new form Login
      */
     public LoginUsuario() {
         initComponents();
+        getContentPane().setBackground(new Color(245, 245, 245));
+        TimingTarget targetLogin = new TimingTargetAdapter(){
+           @Override
+           public void timingEvent(float fraction){
+               background1.setAnimate(fraction);
+           }
+           @Override
+            public void end(){
+            Funcionarios telaInicial = new Funcionarios();
+            telaInicial.setVisible(true);
+            
+            LoginUsuario.this.dispose();
+            }  
+        };
+        animatorLogin = new Animator(500, targetLogin);
+        animatorLogin.setResolution(0);
+        
     }
 
     /**
@@ -21,113 +45,139 @@ public class LoginUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnLogin = new javax.swing.JButton();
-        btnCadastrar = new javax.swing.JButton();
-        txtUsuario = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        background1 = new swing.Background();
         jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        btnEntrar = new com.raven.swing.Button();
+        txtUsuario = new com.raven.swing.TextField();
+        txtSenha = new com.raven.swing.PasswordField();
+        jLabel1 = new javax.swing.JLabel();
+        btnCadastro = new com.raven.swing.Button();
+        jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(800, 500));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(910, 540));
         getContentPane().setLayout(null);
 
-        btnLogin.setBackground(new java.awt.Color(0, 0, 102));
-        btnLogin.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
-        btnLogin.setText("Login");
-        btnLogin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        btnEntrar.setBackground(new java.awt.Color(255, 153, 0));
+        btnEntrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEntrar.setText("Entrar");
+        btnEntrar.setEffectColor(new java.awt.Color(236, 233, 227));
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoginActionPerformed(evt);
+                btnEntrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLogin);
-        btnLogin.setBounds(510, 310, 170, 30);
 
-        btnCadastrar.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        btnCadastrar.setForeground(new java.awt.Color(0, 0, 102));
-        btnCadastrar.setText("Cadastrar");
-        btnCadastrar.setBorder(null);
-        btnCadastrar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnCadastrar);
-        btnCadastrar.setBounds(610, 420, 70, 30);
-
-        txtUsuario.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtUsuario.setLabelText("Email");
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(txtUsuario);
-        txtUsuario.setBounds(490, 150, 230, 30);
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel1.setText("Usuário:");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(490, 110, 110, 40);
+        txtSenha.setLabelText("Senha");
+        txtSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSenhaActionPerformed(evt);
+            }
+        });
 
-        jLabel2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel2.setText("Senha:");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(490, 200, 100, 40);
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 153, 0));
+        jLabel1.setText("Bem vindo!");
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 51));
-        jPanel1.setPreferredSize(new java.awt.Dimension(400, 500));
+        btnCadastro.setForeground(new java.awt.Color(255, 153, 0));
+        btnCadastro.setText("Cadastrar-se");
+        btnCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastroActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setText("Não tem conta ?");
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logoresize.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(109, 109, 109)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(59, 59, 59))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(154, 154, 154))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(109, 109, 109))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(133, 133, 133)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(btnCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabel1)
+                        .addGap(49, 49, 49)
+                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(168, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 400, 500);
+        javax.swing.GroupLayout background1Layout = new javax.swing.GroupLayout(background1);
+        background1.setLayout(background1Layout);
+        background1Layout.setHorizontalGroup(
+            background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, background1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        background1Layout.setVerticalGroup(
+            background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, background1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
-        jLabel3.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel3.setText("Não tem conta ?");
-        jLabel3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(490, 430, 120, 18);
-
-        jLabel4.setFont(new java.awt.Font("Proxy 1", 1, 36)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel4.setText("LOGIN");
-        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(560, 30, 140, 80);
-        getContentPane().add(txtSenha);
-        txtSenha.setBounds(490, 240, 230, 30);
+        getContentPane().add(background1);
+        background1.setBounds(0, 0, 910, 510);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUsuarioActionPerformed
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
 
-    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        CadastrarUsuario cadastrarUsuario = new CadastrarUsuario();
-        cadastrarUsuario.setVisible(true);
-    }//GEN-LAST:event_btnCadastrarActionPerformed
-
-    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        
         DB db = new DB("bancodados.db");
         
         String sql = "SELECT usuario, senha FROM usuarios WHERE usuario = '" + txtUsuario.getText() + "' AND senha = '" + txtSenha.getText() + "'";
@@ -137,16 +187,52 @@ public class LoginUsuario extends javax.swing.JFrame {
         if (db.next()) 
         {
             db.closeConnection();
-            Menu menu = new Menu();
-            menu.setVisible(true);
+            Produtos produtos = new Produtos();
+            produtos.setVisible(true);
             this.setVisible(false);
         }
         else
         {
             db.closeConnection();
-            JOptionPane.showMessageDialog(null,"As credenciais estão incorretas");
+            txtUsuario.setHelperText("Email ou senha inválidos.");
         }
-    }//GEN-LAST:event_btnLoginActionPerformed
+        
+        if(!animatorLogin.isRunning()){
+            String user = txtUsuario.getText().trim();
+            String senha = String.valueOf(txtSenha.getPassword());
+            boolean action = true;
+
+            if(user.equals("")) {
+                txtUsuario.setHelperText("Por favor digite seu email.");
+                txtUsuario.grabFocus();
+                action = false;
+            }
+
+            if(senha.equals("")) {
+                txtSenha.setHelperText("Por favor digite sua senha.");
+                txtSenha.grabFocus();
+                action = false;
+            }
+
+            if(action){
+                animatorLogin.start();
+            }
+        }
+    }//GEN-LAST:event_btnEntrarActionPerformed
+
+    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsuarioActionPerformed
+
+    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSenhaActionPerformed
+
+    private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
+        CadastrarUsuario cadastrarUsuario = new CadastrarUsuario();
+        cadastrarUsuario.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnCadastroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,14 +271,14 @@ public class LoginUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCadastrar;
-    private javax.swing.JButton btnLogin;
+    private swing.Background background1;
+    private com.raven.swing.Button btnCadastro;
+    private com.raven.swing.Button btnEntrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField txtSenha;
-    private javax.swing.JTextField txtUsuario;
+    private com.raven.swing.PasswordField txtSenha;
+    private com.raven.swing.TextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
