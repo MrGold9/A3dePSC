@@ -17,7 +17,7 @@ public class ProdutosCad extends javax.swing.JFrame {
             if(db.next()) {
                 int quantidade = db.getInt("quantidade");
                 String nome = db.getString("nome");
-                Date datavalidade = db.getDate("datavalidade");
+                int datavalidade = db.getInt("datavalidade");
                 txtQuantidade.setText(String.valueOf(quantidade));
                 txtDataValidade.setText(String.valueOf(datavalidade));
                 txtNome.setText(nome);

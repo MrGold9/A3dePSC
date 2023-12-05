@@ -15,7 +15,7 @@ public class Produtos extends javax.swing.JFrame {
         DB db = new DB("bancodados.db");
         db.query("SELECT * FROM produtos");
         String cols[] = { "CODIGO", "NOME", "DATA DE VALIDADE", "QUANTIDADE" };
-        String fields[] = { "codigo", "nome", "datadevalidade", "quantidade" };
+        String fields[] = { "codigo", "nome", "datavalidade", "quantidade" };
         TableRender.render(table, cols, fields, db);
         db.closeConnection();        
     }
@@ -166,7 +166,7 @@ public class Produtos extends javax.swing.JFrame {
         DB db = new DB("bancodados.db");
         db.query("SELECT * FROM produtos WHERE nome LIKE '%" + nomeBuscar + "%'");
         String cols[] = { "CODIGO", "NOME", "DATA DE VALIDADE", "QUANTIDADE" };
-        String fields[] = { "codigo", "nome", "data de validade", "quantidade" };         
+        String fields[] = { "codigo", "nome", "datavalidade", "quantidade" };         
         TableRender.render(table, cols, fields, db);
         db.closeConnection(); 
     }//GEN-LAST:event_jButton4ActionPerformed
