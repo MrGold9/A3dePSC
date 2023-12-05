@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -85,5 +86,9 @@ public class DB {
             System.out.println("Erro chamada getDouble!");            
         }
         return 0;
+    }
+
+    Date getDate(String datavalidade) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

@@ -1,25 +1,26 @@
 package projetoa3;
 
+import java.util.Date;
+
 public class ProdutosCad extends javax.swing.JFrame {
-    private Produtos janelaProdutos;
-    private int codigo;
+    private final Produtos janelaProdutos;
+    private final int codigo;
     
     public ProdutosCad(Produtos janelaProdutos, int codigo) {
         initComponents();
-        this.janelaProdutos = janelaProdutos;
+        this.janelaProdutos= janelaProdutos;
         this.codigo = codigo;
         if(codigo != -1) {
             this.setTitle("EDITAR Produtos");
             DB db = new DB("bancodados.db");
-            db.query("SELECT * FROM produtos WHERE codigo="+codigo);
+            db.query("SELECT * FROM Produtos WHERE codigo="+codigo);
             if(db.next()) {
-                String nome = db.getString("nome");
-                String dataValidade = db.getString("dataValidade");
                 int quantidade = db.getInt("quantidade");
-               
-                txtNome.setText(nome);
-                txtdataValidade.setText(dataValidade);
+                String nome = db.getString("nome");
+                Date datavalidade = db.getDate("datavalidade");
                 txtQuantidade.setText(String.valueOf(quantidade));
+                txtDataValidade.setText(String.valueOf(datavalidade));
+                txtNome.setText(nome);
                
             }
             db.closeConnection();        
@@ -37,9 +38,9 @@ public class ProdutosCad extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         txtQuantidade = new javax.swing.JTextField();
-        txtdataValidade = new javax.swing.JTextField();
+        txtDataValidade = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        btnSalvar = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -47,7 +48,7 @@ public class ProdutosCad extends javax.swing.JFrame {
 
         jLabel2.setText("Quantidade");
 
-        jLabel3.setText("Data de validade");
+        jLabel3.setText("DataValidade");
 
         jButton1.setText("Cancelar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -56,10 +57,10 @@ public class ProdutosCad extends javax.swing.JFrame {
             }
         });
 
-        btnSalvar.setText("Salvar");
-        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setText("Salvar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalvarActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -82,7 +83,7 @@ public class ProdutosCad extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jButton1)
                                         .addGap(43, 43, 43)
-                                        .addComponent(btnSalvar))
+                                        .addComponent(jButton2))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jLabel1)
                                         .addGap(32, 32, 32)
@@ -91,7 +92,7 @@ public class ProdutosCad extends javax.swing.JFrame {
                                 .addGap(27, 27, 27)
                                 .addComponent(jLabel3)
                                 .addGap(3, 3, 3)
-                                .addComponent(txtdataValidade)))
+                                .addComponent(txtDataValidade)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(304, 304, 304))
         );
@@ -109,11 +110,11 @@ public class ProdutosCad extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtdataValidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDataValidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(81, 81, 81)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(btnSalvar))
+                    .addComponent(jButton2))
                 .addContainerGap(128, Short.MAX_VALUE))
         );
 
@@ -125,37 +126,41 @@ public class ProdutosCad extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         String nome = txtNome.getText();
-        String dataValidade = txtdataValidade.getText();
-        int quantidade = Integer.parseInt(txtQuantidade.getText());
-        DB db = new DB("bancodados.db");
-        String comando = "";
-        if(codigo == -1) {
-            comando = "INSERT INTO produtos (nome, dataValidade, quantidade) VALUES ('" + nome + "', '" + dataValidade + "', '" + quantidade + "');";
-        } else {
-            comando = "UPDATE produtos SET ";
-            comando = comando + "nome='" + nome + "', ";
-            comando = comando + "dataValidade='" + dataValidade + "', ";
-            comando = comando + "quantidade='" + quantidade + "'";
-           
-            comando = comando + " WHERE codigo="+this.codigo; 
-        }
-        db.execQuery(comando);
-        janelaProdutos.refreshTable();
-        this.dispose();
-    }//GEN-LAST:event_btnSalvarActionPerformed
+    String quantidade = txtQuantidade.getText();
+    String datavalidade = txtDataValidade.getText();
+    DB db = new DB("bancodados.db");
+    String query = "";
+    if(codigo == -1) {
+       query = "INSERT INTO produtos (nome, datavalidade, quantidade) ";
+query = query + "VALUES (";
+query = query + "'" + nome + "',";
+query = query + "'" + datavalidade + "',";
+query = query + "'" + quantidade + "'";
+query = query + ");";
+    } else {
+        query = "UPDATE produtos SET ";
+        query = query + "nome='" + nome + "', ";
+        query = query + "datavalidade='" + datavalidade + "', ";
+        query = query + "quantidade='" + quantidade + "' ";
+        query = query + "WHERE codigo=" + this.codigo; 
+    }
+    db.execQuery(query);
+    janelaProdutos.refreshTable();
+    this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSalvar;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField txtDataValidade;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtQuantidade;
-    private javax.swing.JTextField txtdataValidade;
     // End of variables declaration//GEN-END:variables
 }

@@ -29,7 +29,7 @@
                   <Group type="102" attributes="0">
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -42,8 +42,8 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="txtNome" max="32767" attributes="0"/>
                           <Component id="txtCPF" max="32767" attributes="0"/>
-                          <Component id="txtdataNascimento" pref="318" max="32767" attributes="0"/>
-                          <Component id="txtEstadoCivil" pref="318" max="32767" attributes="0"/>
+                          <Component id="txtdatanascimento" pref="318" max="32767" attributes="0"/>
+                          <Component id="txtestadocivil" pref="318" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -67,17 +67,17 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtdataNascimento" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtdatanascimento" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtEstadoCivil" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtestadocivil" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="92" max="32767" attributes="0"/>
           </Group>
@@ -104,7 +104,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtCPF">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtdataNascimento">
+    <Component class="javax.swing.JTextField" name="txtdatanascimento">
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
@@ -114,12 +114,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="btnSalvar">
       <Properties>
         <Property name="text" type="java.lang.String" value="SALVAR"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalvarActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
@@ -127,7 +127,7 @@
         <Property name="text" type="java.lang.String" value="Estado Civil:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtEstadoCivil">
+    <Component class="javax.swing.JTextField" name="txtestadocivil">
     </Component>
   </SubComponents>
 </Form>

@@ -138,10 +138,10 @@ public class Funcionarios extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Nenhuma linha foi selecionada. Selecione uma linha!");
             return;
         }
-        String codigo = (String) table.getValueAt(linha, 0);
-        System.out.println("Código :"+codigo);
+        String id = (String) table.getValueAt(linha, 0);
+        System.out.println("id :"+id);
         DB db = new DB("bancodados.db");
-        String query = "DELETE FROM times WHERE codigo="+codigo;
+        String query = "DELETE FROM funcionarios WHERE id="+id;
         db.execQuery(query);
         refreshTable();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -154,9 +154,9 @@ public class Funcionarios extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Nenhuma linha foi selecionada. Selecione uma linha!");
             return;
         }
-        String codigo = (String) table.getValueAt(linha, 0);
-        System.out.println("Código :"+codigo);
-        FuncionariosCad cadastro = new FuncionariosCad(this, Integer.parseInt(codigo));
+        String id = (String) table.getValueAt(linha, 0);
+        System.out.println("id :"+id);
+        FuncionariosCad cadastro = new FuncionariosCad(this, Integer.parseInt(id));
         cadastro.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -165,9 +165,9 @@ public class Funcionarios extends javax.swing.JFrame {
         String nomeBuscar = txtBusca.getText();
         System.out.println("texto da busca: "+nomeBuscar);
         DB db = new DB("bancodados.db");
-        db.query("SELECT * FROM times WHERE nome LIKE '%" + nomeBuscar + "%'");
+        db.query("SELECT * FROM funcionarios WHERE nome LIKE '%" + nomeBuscar + "%'");
         String cols[] = { "ID", "NOME", "DATA DE NASCIMENTO", "ESTADO CIVIL","CPF" };
-        String fields[] = { "id", "nome", "datanascimento", "estadocovil","cpf" };        
+        String fields[] = { "id", "nome", "dataNascimento", "estadoCivil","cpf" };        
         TableRender.render(table, cols, fields, db);
         db.closeConnection(); 
     }//GEN-LAST:event_jButton4ActionPerformed

@@ -15,12 +15,13 @@ public class Produtos extends javax.swing.JFrame {
         DB db = new DB("bancodados.db");
         db.query("SELECT * FROM produtos");
         String cols[] = { "CODIGO", "NOME", "DATA DE VALIDADE", "QUANTIDADE" };
-        String fields[] = { "codigo", "nome", "data de validade", "quantidade" };        
+        String fields[] = { "codigo", "nome", "datadevalidade", "quantidade" };
         TableRender.render(table, cols, fields, db);
         db.closeConnection();        
     }
     
     @SuppressWarnings("unchecked")
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -42,7 +43,7 @@ public class Produtos extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Código", "Nome", "Quantidade", "Data de Validade"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
         jScrollPane1.setViewportView(table);
