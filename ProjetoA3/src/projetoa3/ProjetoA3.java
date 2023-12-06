@@ -4,13 +4,11 @@ public class ProjetoA3 {
 
     public static void main(String[] args) {
         
-        //Times timesJanela = new Times();
-        //timesJanela.setVisible(true);
-        //Frutas frutasJanela = new Frutas();
-        //frutasJanela.setVisible(true);
-        
+         
         LoginUsuario loginUsuario = new LoginUsuario();
         loginUsuario.setTitle("Login");
+        loginUsuario.setSize(910, 540);
+        loginUsuario.setLocation(0, 0);
         loginUsuario.setVisible(true);
         
         DB db = new DB("bancodados.db");

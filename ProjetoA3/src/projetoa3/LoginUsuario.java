@@ -10,7 +10,7 @@ import org.sqlite.SQLiteException;
 public class LoginUsuario extends javax.swing.JFrame {
     
         
-    private Animator animatorLogin;
+    private final Animator animatorLogin;
     
     /**
      * Creates new form Login
@@ -22,14 +22,7 @@ public class LoginUsuario extends javax.swing.JFrame {
            @Override
            public void timingEvent(float fraction){
                background1.setAnimate(fraction);
-           }
-           @Override
-            public void end(){
-            Funcionarios telaInicial = new Funcionarios();
-            telaInicial.setVisible(true);
-            
-            LoginUsuario.this.dispose();
-            }  
+           }  
         };
         animatorLogin = new Animator(500, targetLogin);
         animatorLogin.setResolution(0);
@@ -57,9 +50,9 @@ public class LoginUsuario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(910, 540));
         getContentPane().setLayout(null);
+
+        background1.setPreferredSize(new java.awt.Dimension(910, 540));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -111,7 +104,7 @@ public class LoginUsuario extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(109, 109, 109)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,8 +152,9 @@ public class LoginUsuario extends javax.swing.JFrame {
         background1Layout.setHorizontalGroup(
             background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, background1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         background1Layout.setVerticalGroup(
             background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,6 +172,10 @@ public class LoginUsuario extends javax.swing.JFrame {
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
 
+        String user = txtUsuario.getText().trim();
+        String senha = String.valueOf(txtSenha.getPassword());
+        boolean action = true;
+        
         DB db = new DB("bancodados.db");
         
         String sql = "SELECT usuario, senha FROM usuarios WHERE usuario = '" + txtUsuario.getText() + "' AND senha = '" + txtSenha.getText() + "'";
@@ -187,20 +185,18 @@ public class LoginUsuario extends javax.swing.JFrame {
         if (db.next()) 
         {
             db.closeConnection();
-            Produtos produtos = new Produtos();
-            produtos.setVisible(true);
+            Funcionarios funcionario = new Funcionarios();
+            funcionario.setVisible(true);
             this.setVisible(false);
         }
         else
         {
             db.closeConnection();
             txtUsuario.setHelperText("Email ou senha inválidos.");
+            action = false;
         }
         
         if(!animatorLogin.isRunning()){
-            String user = txtUsuario.getText().trim();
-            String senha = String.valueOf(txtSenha.getPassword());
-            boolean action = true;
 
             if(user.equals("")) {
                 txtUsuario.setHelperText("Por favor digite seu email.");
@@ -234,41 +230,6 @@ public class LoginUsuario extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnCadastroActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LoginUsuario().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private swing.Background background1;
