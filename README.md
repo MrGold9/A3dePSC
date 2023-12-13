@@ -6,7 +6,7 @@
       <img src="https://img.shields.io/badge/NetBeansIDE-1B6AC6.svg?style=for-the-badge&logo=apache-netbeans-ide&logoColor=white"/>
 </p>
 
-> Status do Projeto: 🚧⚠(Em desenvolvimento)
+> Status do Projeto: ✅(Concluído)
 
 ### Tópicos 
 
