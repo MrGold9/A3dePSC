@@ -32,7 +32,7 @@
 ## Funcionamento
 
 <!-- Adicionar gif, ou prints do projeto -->
-![Funcionamento](https://cdn.discordapp.com/attachments/381484459939201035/1181457708310855821/gifFuncionamento1.gif?ex=6581213c&is=656eac3c&hm=a4aa531980173ce32d423966168a0333bbd1bd696939893c51f60ebb996972bc&)
+![Funcionamento](https://raw.githubusercontent.com/MrGold9/A3dePSC/main/ProjetoA3/src/icons/gifFuncionamento1.gif)
 
 ## Pré-requisitos
 
